@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Random Posts</h1>
+    <% for(let post of posts){%>
+      <div>
+        <h3>@ <%= post.username %> </h3>
+        <h3>@ <%= post.content %> </h3>
+        <br>
+        <a href="http://localhost:3000/posts/<%= post.id %>">See in dtails</a>
+        <a href="http://localhost:3000/posts/id:edit<%= post.id %>">Edit your post</a>
+      </div>
+    <% }%>
+</body>
+</html>
