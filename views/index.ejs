@@ -13,8 +13,12 @@
         <h3>@ <%= post.content %> </h3>
         <br>
         <a href="http://localhost:3000/posts/<%= post.id %>">See in dtails</a>
-        <a href="http://localhost:3000/posts/id:edit<%= post.id %>">Edit your post</a>
+        <a href="http://localhost:3000/posts/<%= post.id %>/edit">Edit your post</a>
+        <form method="post" action="/posts/<%= post.id %>?_method=DELETE"">
+           <button>Delete</button>
+        </form>
       </div>
     <% }%>
+    <a href="http://localhost:3000/posts/new">Create new post</a>
 </body>
 </html>
