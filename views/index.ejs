@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <h1>Random Posts</h1>
     <% for(let post of posts){%>
-      <div>
-        <h3>@ <%= post.username %> </h3>
-        <h3>@ <%= post.content %> </h3>
+      <div class="post">
+        <h3 class="username">@ <%= post.username %> </h3>
+        <h3 class="content">@ <%= post.content %> </h3>
         <br>
-        <a href="http://localhost:3000/posts/<%= post.id %>">See in dtails</a>
+        <div class="actions">
+        <a href="http://localhost:3000/posts/<%= post.id %>">See in details</a>
         <a href="http://localhost:3000/posts/<%= post.id %>/edit">Edit your post</a>
         <form method="post" action="/posts/<%= post.id %>?_method=DELETE"">
            <button>Delete</button>
         </form>
       </div>
+      </div>
     <% }%>
-    <a href="http://localhost:3000/posts/new">Create new post</a>
+    <a id="anchorTag" href="http://localhost:3000/posts/new">Create Post</a>
 </body>
 </html>
