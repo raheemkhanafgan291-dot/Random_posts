@@ -14,6 +14,7 @@
         <h3 class="content">@ <%= post.content %> </h3>
         <br>
         <div class="actions">
+          <img class="photo" src="https://www.shutterstock.com/shutterstock/photos/2588014613/display_1500/stock-photo-cartoon-artistic-image-of-hulk-fist-smashing-through-a-black-brick-wall-with-lime-green-lightening-2588014613.jpg" alt="img">
         <a href="http://localhost:3000/posts/<%= post.id %>">See in details</a>
         <a href="http://localhost:3000/posts/<%= post.id %>/edit">Edit your post</a>
         <form method="post" action="/posts/<%= post.id %>?_method=DELETE"">
