@@ -68,3 +68,15 @@
     display: flex;
     
 }
+
+.like-btn {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.like-btn:hover {
+    background: #ffe6e6;
+}

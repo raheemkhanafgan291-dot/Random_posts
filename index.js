@@ -19,17 +19,20 @@ let posts = [
     {
         id:uuidv4(),
         username:"RK",
-        content:"rgm"
+        content:"rgm",
+        likes:0,
     },
         {
         id:uuidv4(),
         username:"kk",
-        content:"vip"
+        content:"vip",
+        likes:0,
     },
         {
         id:uuidv4(),
         username:"csk",
-        content:"bhp"
+        content:"bhp",
+        likes:0,
     },
 ]
 
@@ -77,7 +80,20 @@ app.patch("/posts/:id", (req,res)=>{
 app.post("/posts",(req,res)=>{
     let id = uuidv4();
     let { username, content}= req.body;
-    posts.push({ id, username,content});
+    posts.push({ id, username,content, likes:0});
+    res.redirect("/posts");
+})
+
+app.post("/posts/:id/like",(req,res)=>{
+    let {id} = req.params;
+    let post = posts.find((p)=> p.id === id);
+
+    if(post){
+        post.likes++;
+       console.log("Likes:", post.likes);
+    }else {
+        console.log("Post not found");
+    }
     res.redirect("/posts");
 })
 
