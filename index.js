@@ -84,19 +84,20 @@ app.post("/posts",(req,res)=>{
     res.redirect("/posts");
 })
 
-app.post("/posts/:id/like",(req,res)=>{
-    let {id} = req.params;
-    let post = posts.find((p)=> p.id === id);
+app.post("/posts/:id/like", (req, res) => {
+    let { id } = req.params;
 
-    if(post){
+    let post = posts.find((p) => p.id == id);
+
+    if (post) {
         post.likes++;
-       console.log("Likes:", post.likes);
-    }else {
+        console.log("Likes:", post.likes);
+    } else {
         console.log("Post not found");
     }
-    res.redirect("/posts");
-})
 
+    res.redirect("/posts");
+});
 
 app.listen(port,()=>{
     console.log("server is running")
