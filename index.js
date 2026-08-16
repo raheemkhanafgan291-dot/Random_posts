@@ -4,8 +4,21 @@ const app = express();
 const port = 3000;
 const path = require("path");
 const { v4:  uuidv4 } = require('uuid');
+const mongoose = require("mongoose");
+const Post = require("./models/post");
 
 uuidv4();
+
+// DataBase centre
+
+mongoose.connect("mongodb://127.0.0.1:27017/random_posts")
+    .then(() => {
+        console.log("MongoDB connected");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
 
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "views"))
@@ -37,12 +50,13 @@ let posts = [
 ]
 
 
-app.get("/posts",(req, res)=>{
+app.get("/posts", async(req, res)=>{
+    let posts = await Post.find()
     res.render("index.ejs",{posts})
 })
 
 
-app.get("/posts/new",(req,res)=>{
+app.get("/posts/new", async(req,res)=>{
     res.render("newpost.ejs");
 
 })
