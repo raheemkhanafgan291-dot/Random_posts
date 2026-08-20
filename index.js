@@ -98,6 +98,10 @@ app.post("/posts",(req,res)=>{
     res.redirect("/posts");
 })
 
+app.get("/content",(req,res)=>{
+    res,send("Contect us");
+})
+
 app.post("/posts/:id/like", (req, res) => {
     let { id } = req.params;
 
