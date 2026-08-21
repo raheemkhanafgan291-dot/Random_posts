@@ -91,12 +91,19 @@ app.patch("/posts/:id", (req,res)=>{
 })
 
 
-app.post("/posts",(req,res)=>{
-    let id = uuidv4();
-    let { username, content}= req.body;
-    posts.push({ id, username,content, likes:0});
+app.post("/posts", async (req, res) => {
+    let { username, content } = req.body;
+
+    let newPost = new Post({
+        username: username,
+        content: content,
+        likes: 0
+    });
+
+    await newPost.save();
+
     res.redirect("/posts");
-})
+});
 
 app.get("/content",(req,res)=>{
     res,send("Contect us");
